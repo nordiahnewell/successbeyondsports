@@ -40,6 +40,26 @@
 })();
 
 (function(){
+  var btn = document.getElementById('scroll-top-btn');
+  if(!btn) return;
+
+  function toggleVisibility(){
+    if(window.scrollY > 400){
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  }
+
+  window.addEventListener('scroll', toggleVisibility, {passive:true});
+  toggleVisibility();
+
+  btn.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+})();
+
+(function(){
   var checkboxes = Array.prototype.slice.call(document.querySelectorAll('.sc-item input[type="checkbox"]'));
   var countEl = document.getElementById('sc-count');
   var totalEl = document.getElementById('sc-total');
